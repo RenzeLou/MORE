@@ -37,7 +37,7 @@ In this code, we use two real-world RE datasets:
   python ./data/datasets/nyt_su/nyt_divide_supervision.py
   ```
 
-  then the original .txt file will be processed into .json format and be divided into train:dev:test(6:2:2).
+  then the original **.txt** file will be processed into **.json** format and be divided into train\dev\test(6:2:2).
 
 ## 3. Run it
 
@@ -47,41 +47,48 @@ In our experiments, we use CNN and BERT for our extractor. The architecture of C
 
   1. CNN
 
-  ```
+  ```bash
   python main_cmd.py --dataset fewrel 
   ```
 
   2. CNN+VAT
 
-  ```
-  
+  ```bash
+  python main_cmd.py --dataset fewrel --VAT 1 --epoch_num 4 --warm_up 3 --power_iterations 1 --p_mult 0.03 --lambda_V 1 
   ```
 
   3. BERT
 
-  ```
-  
+  ```bash
+  python main_cmd.py --dataset fewrel --learning_rate 0.00001 --batch_num 1000 --BERT 1 
   ```
 
 - **On NYT+FB-sup**:
 
   1. CNN
-  
+
   ```bash
   python main_cmd.py --dataset nyt
   ```
-  
-  1. CNN+VAT
-  
+
+  ​			b. CNN+VAT
+
   ```bash
-  python main_cmd.py --VAT 1 --power_iterations 1 --p_mult 0.5 --epoch_num 6 --warm_up 4 --lambda_V 1.5
+  python main_cmd.py --dataset nyt --VAT 1 --epoch_num 6 --warm_up 4 --power_iterations 1 --p_mult 0.5 --lambda_V 1.5
   ```
-  
-  1. BERT
-  
+
+  ​			c. BERT
+
   ```bash
-  
+  python main_cmd.py --dataset nyt --learning_rate 0.00001 --batch_num 1000 --BERT 1 
   ```
+
+*Note that if you have enough computing resources, you can try to use **MORE(BERT)+VAT** (We didn't list this result on paper  due to the limitation of GPU memory) :*
+
+```bash
+python main_cmd.py --dataset fewrel --VAT 1 --epoch_num 4 --warm_up 0 --power_iterations 1 --p_mult 0.03 --lambda_V 1 --learning_rate 0.00001 --batch_num 1000 --BERT 1
+python main_cmd.py --dataset nyt --VAT 1 --epoch_num 4 --warm_up 0 --power_iterations 1 --p_mult 0.5 --lambda_V 1.5 --learning_rate 0.00001 --batch_num 1000 --BERT 1
+```
 
 ## 4. Future Work
 
