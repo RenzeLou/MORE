@@ -45,19 +45,19 @@ In our experiments, we use CNN and BERT for our extractor. The architecture of C
 
 - **On FewRel**:
 
-  - CNN
+  - MORE(CNN) 
 
   ```bash
   python main_cmd.py --dataset fewrel 
   ```
 
-  - CNN+VAT
+  - MORE(CNN)+VAT
 
   ```bash
   python main_cmd.py --dataset fewrel --VAT 1 --epoch_num 4 --warm_up 3 --power_iterations 1 --p_mult 0.03 --lambda_V 1 
   ```
 
-  - BERT
+  - MORE(BERT)
 
   ```bash
   python main_cmd.py --dataset fewrel --learning_rate 0.00001 --batch_num 1000 --BERT 1 
@@ -65,19 +65,19 @@ In our experiments, we use CNN and BERT for our extractor. The architecture of C
 
 - **On NYT+FB-sup**:
 
-  - CNN
+  - MORE(CNN)
 
   ```bash
   python main_cmd.py --dataset nyt
   ```
 
-  - CNN+VAT
+  - MORE(CNN)+VAT
 
   ```bash
   python main_cmd.py --dataset nyt --VAT 1 --epoch_num 6 --warm_up 4 --power_iterations 1 --p_mult 0.5 --lambda_V 1.5
   ```
 
-  - BERT
+  - MORE(BERT)
 
   ```bash
   python main_cmd.py --dataset nyt --learning_rate 0.00001 --batch_num 1000 --BERT 1 
@@ -92,8 +92,8 @@ python main_cmd.py --dataset nyt --VAT 1 --epoch_num 4 --warm_up 0 --power_itera
 
 ## 4. Future Work
 
-- Improve virtual adversarial training.
-- Apply virtual adversarial training on MORE(BERT).
+- Optimize virtual adversarial training.
+- Complete MORE(BERT)+VAT.
 
  
 
